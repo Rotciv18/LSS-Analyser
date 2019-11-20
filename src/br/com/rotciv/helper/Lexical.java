@@ -30,6 +30,7 @@ public class Lexical {
 
         if (isAlpha(token.charAt(0))) {
             for (int i = 1 ; i < token.length() ; i++) {
+                //converte caracter para String só pra poder utilizar a função isInteger
                 String character = String.valueOf(token.charAt(i));
                 if (!isInteger(character) && !isAlpha(token.charAt(i))) {
 
@@ -52,10 +53,13 @@ public class Lexical {
             if (token.charAt(i) == '0' || token.charAt(i) == '1' || token.charAt(i) == '2'
                     || token.charAt(i) == '3' || token.charAt(i) == '4' || token.charAt(i) == '5'
                     || token.charAt(i) == '6' || token.charAt(i) == '7' || token.charAt(i) == '8'
-                    || token.charAt(i) == '9' || token.charAt(0) == '-') // Para números negativos
-                return true;
+                    || token.charAt(i) == '9' ) {
+                ;//faz nada
+            } else {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 
     public static boolean isFloat (String token) {

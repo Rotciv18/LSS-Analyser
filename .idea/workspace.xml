@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9b00685-3bed-48c8-8bf6-8fe60b1ebb16" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/helper/Lexical.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/helper/Lexical.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/model/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/model/Token.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/helper/Lexical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/helper/Lexical.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/model/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/model/Token.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,5 +94,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/br/com/rotciv/Main.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

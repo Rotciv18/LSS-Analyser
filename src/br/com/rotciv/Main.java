@@ -43,10 +43,18 @@ public class Main {
     public static boolean setTokensAndTypes(List<String> fileLines, List<Token> tokens){
         boolean isComment = false;
         boolean hasErrors = false;
+        boolean commentNotClosed = false;
 
         for (int i = 0; i < fileLines.size();i++){ //linha em linha
+
+            //Considera-se aqui que o comentário deve ser aberto e fechado numa mesma linha
+            if (commentNotClosed) {
+                System.out.println("ERRO: O comentário iniciado na linha " + (i) + " não foi fechado!" );
+                return false;
+            }
+
             List<String> tokenLine = new ArrayList<>();
-            StringTokenizer stringTokenizer = new StringTokenizer(fileLines.get(i), ".:=;(),+-*/{} \r", true);
+            StringTokenizer stringTokenizer = new StringTokenizer(fileLines.get(i), ".:=;(),+-*/{} \r\t", true);
 
             while (stringTokenizer.hasMoreTokens()){
                 //tokenLine.add(stringTokenizer.nextToken().replaceAll("\\s", ""));
@@ -59,20 +67,25 @@ public class Main {
 
                 String tokenString = (tokenLine.get(j));
 
-                //Parte pro próximo se encontrar espaço em branco
-                if (tokenString.isBlank())
-                    continue;
-
                 //Comentários
                 if (tokenString.equals("{") || isComment){
                     isComment = true;
 
                     if (tokenString.equals("}")){
                         isComment = false;
+
+                        //fim da linha: (pum not intended)
+                    } else if (j+1 == tokenLine.size()) {
+                        commentNotClosed = true;
                     }
 
                     continue;
                 }
+
+                //Parte pro próximo se encontrar espaço em branco
+                if (tokenString.isBlank())
+                    continue;
+
 
                 if (!tokenString.equals(":"))
                     ;
@@ -80,6 +93,8 @@ public class Main {
                     tokenString = ":=";
                     j++;
                 }
+
+                //Classifica um tipo ao token
                 newToken.setString(tokenString);
                 if ( newToken.getString().equals("") )
                     continue;
