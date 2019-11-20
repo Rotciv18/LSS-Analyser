@@ -86,6 +86,25 @@ public class Main {
                 if (tokenString.isBlank())
                     continue;
 
+                //possibilidade de numero real
+                if (Lexical.isInteger(tokenString)) {
+                    int feet, head;
+                    boolean foundFloat = false;
+                    feet = head = j+1;
+
+                    for (; Lexical.isInteger(tokenLine.get(head)) || tokenLine.get(head).equals(".") ; head++ ) {
+                        if (tokenLine.get(head).equals("."))
+                            foundFloat = true;
+
+                    }
+
+                    if (foundFloat) {
+                        for (; feet < head ; feet++){
+                            tokenString = tokenString + tokenLine.get(feet);
+                            j++;
+                        }
+                    }
+                }
 
                 if (!tokenString.equals(":"))
                     ;

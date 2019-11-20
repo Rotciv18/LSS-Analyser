@@ -1,4 +1,4 @@
-program Test3 {programa para teste do lexico}
+program Test3 3.5 {programa para teste do lexico}
 var
    NUMERO  : integer;
    final   : integer;

@@ -69,10 +69,10 @@ public class Lexical {
             if (token.charAt(i) == '.')
                 isThereFloat = true;
 
-            if (token.charAt(i) != '0' || token.charAt(i) != '1' || token.charAt(i) != '2'
-                    || token.charAt(i) != '3' || token.charAt(i) != '4' || token.charAt(i) != '5'
-                    || token.charAt(i) != '6' || token.charAt(i) != '7' || token.charAt(i) != '8'
-                    || token.charAt(i) != '9' || token.charAt(0) != '-' || token.charAt(i) != '.')
+            if (token.charAt(i) != '0' && token.charAt(i) != '1' && token.charAt(i) != '2'
+                    && token.charAt(i) != '3' && token.charAt(i) != '4' && token.charAt(i) != '5'
+                    && token.charAt(i) != '6' && token.charAt(i) != '7' && token.charAt(i) != '8'
+                    && token.charAt(i) != '9' && token.charAt(0) != '-' && token.charAt(i) != '.')
                 return false;
         }
         if (isThereFloat)
