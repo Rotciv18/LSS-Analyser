@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9b00685-3bed-48c8-8bf6-8fe60b1ebb16" name="Default Changelist" comment="" />
+    <list default="true" id="f9b00685-3bed-48c8-8bf6-8fe60b1ebb16" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/helper/Lexical.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/helper/Lexical.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/model/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/model/Token.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/helper/Lexical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/helper/Lexical.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/model/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/model/Token.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,10 +25,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1SCWPhEgVOh8QfYzqBR6PCLdDp7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -59,22 +74,28 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1571068035239</updated>
-      <workItem from="1571068039292" duration="13809000" />
+      <workItem from="1571068039292" duration="14346000" />
+      <workItem from="1571272636018" duration="71000" />
+      <workItem from="1574217173879" duration="1660000" />
+      <workItem from="1574218892717" duration="1771000" />
+      <workItem from="1574220720490" duration="1353000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/br/com/rotciv/helper/Lexical.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

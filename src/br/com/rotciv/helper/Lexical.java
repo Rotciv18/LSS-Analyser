@@ -4,7 +4,8 @@ public class Lexical {
     public enum types {
         KEYWORD("keyword"), IDENTIFIER("identifier"), INTEGER_NUMBER("integer"), FLOAT_NUMBER("float"),
         DELIMITER("delimiter"), ASSIGNMENT("assignment operator"), RELATIONAL_OP("relational operator"),
-        ADDING_OP("adding operator"), MULTIPLICATIVE_OP("multiplicative operator"), COMMENT("comment");
+        ADDING_OP("adding operator"), MULTIPLICATIVE_OP("multiplicative operator"), COMMENT("comment"),
+        INVALID("invalid");
         private final String value;
 
         types(String i) {
@@ -25,10 +26,24 @@ public class Lexical {
     }
 
     public static boolean isIdentifier(String token) {
-        return token.charAt(0) != '0' && token.charAt(0) != '1' && token.charAt(0) != '2'
-                && token.charAt(0) != '3' && token.charAt(0) != '4' && token.charAt(0) != '5'
-                && token.charAt(0) != '6' && token.charAt(0) != '7' && token.charAt(0) != '8'
-                && token.charAt(0) != '9' && !(isDelimiter(token)) && token.charAt(0) != ':';
+        token = token.toLowerCase();
+
+        if (isAlpha(token.charAt(0))) {
+            for (int i = 1 ; i < token.length() ; i++) {
+                String character = String.valueOf(token.charAt(i));
+                if (!isInteger(character) && !isAlpha(token.charAt(i))) {
+
+                    //character inválido para um identificador
+                    if (token.charAt(i) != '_')
+                        return false;
+                }
+            }
+            //não iniciou com um character alfabético
+        } else {
+            return false;
+        }
+
+        return true;
     }
 
     //retorna false se em algum momento encontrar um caracter não inteiro
@@ -85,6 +100,17 @@ public class Lexical {
 
     public static boolean isComment (String token){
         return ( token.equals("{") || token.equals("}"));
+    }
+
+    public static boolean isAlpha (char character){
+        return (
+                character == 'a' || character == 'b' || character == 'c' || character == 'd'
+                || character == 'e' || character == 'f' || character == 'g' || character == 'h'
+                || character == 'i' || character == 'j' || character == 'k' || character == 'l'
+                || character == 'm' || character == 'n' || character == 'o' || character == 'p'
+                || character == 'q' || character == 'r' || character == 's' || character == 't'
+                || character == 'u' || character == 'v' || character == 'w' || character == 'x'
+                || character == 'y' || character == 'z' );
     }
 
 }

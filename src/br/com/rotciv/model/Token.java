@@ -33,8 +33,6 @@ public class Token extends Lexical{
     public void setType() {
         if  ( isKeyword(this.string) ) {
             this.type = types.KEYWORD.getValue();
-        } else if (isIdentifier(this.string)){
-            this.type = types.IDENTIFIER.getValue();
         } else if (isInteger(this.string)) {
             this.type = types.INTEGER_NUMBER.getValue();
         } else if (isFloat(this.string)) {
@@ -49,6 +47,10 @@ public class Token extends Lexical{
             this.type = types.ADDING_OP.getValue();
         } else if (isMultiplicative(this.string)) {
             this.type = types.MULTIPLICATIVE_OP.getValue();
+        } else if (isIdentifier(this.string)){
+            this.type = types.IDENTIFIER.getValue();
+        } else {
+            this.type = types.INVALID.getValue();
         }
     }
 }
