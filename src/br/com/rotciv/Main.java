@@ -2,6 +2,7 @@ package br.com.rotciv;
 
 import br.com.rotciv.helper.Lexical;
 import br.com.rotciv.helper.ReadTextAsString;
+import br.com.rotciv.helper.Syntatic;
 import br.com.rotciv.model.Token;
 
 import java.util.ArrayList;
@@ -38,6 +39,12 @@ public class Main {
                 }
             }
         }
+        if (new Syntatic().isProgram(tokens)) {
+            System.out.println("Deu bom");
+        } else {
+            System.out.println("Deu ruim");
+        }
+
     }
 
     public static boolean setTokensAndTypes(List<String> fileLines, List<Token> tokens){
@@ -106,11 +113,25 @@ public class Main {
                     }
                 }
 
+                //Operador de atribuição
                 if (!tokenString.equals(":"))
                     ;
                 else if (tokenLine.get(j+1).equals("=")){ //atribuição, e não delimitadores!
                     tokenString = ":=";
                     j++;
+                }
+
+                //Operadores relacionais com 2 delimitadores
+                if (tokenString.equals("<")) {
+                    if (tokenLine.get(j+1).equals("=") || tokenLine.get(j+1).equals(">")) {
+                        tokenString = tokenString + tokenLine.get(j+1);
+                        j++;
+                    }
+                } else if (tokenString.equals(">")) {
+                    if (tokenLine.get(j+1).equals("=")) {
+                        tokenString = tokenString + tokenLine.get(j+1);
+                        j++;
+                    }
                 }
 
                 //Classifica um tipo ao token

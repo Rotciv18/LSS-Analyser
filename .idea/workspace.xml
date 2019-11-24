@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/helper/Lexical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/helper/Lexical.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +23,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1SCWPhEgVOh8QfYzqBR6PCLdDp7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -94,23 +95,9 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/br/com/rotciv/Main.java</url>
-          <line>118</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/br/com/rotciv/helper/Lexical.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="token.charAt(i)" language="JAVA" />
+        <watch expression="tokens.get(index).getString()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
