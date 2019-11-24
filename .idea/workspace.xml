@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f9b00685-3bed-48c8-8bf6-8fe60b1ebb16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/helper/Syntatic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/helper/Syntatic.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

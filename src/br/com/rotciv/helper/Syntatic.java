@@ -131,8 +131,12 @@ public class Syntatic {
                                 return compoundCommand(tokens);
                             }
                         }
+                    } else {
+                        System.out.println("Erro em subProgramDeclaration(). Obtido " + tokens.get(index).getString() + " em vez de ';'");
                     }
                 }
+            } else {
+                System.out.println("Erro em subProgramDeclaration(). Obtido " + tokens.get(index).getString() + " em vez de Identificador");
             }
         }
         return false;
@@ -147,6 +151,8 @@ public class Syntatic {
 
                 if ( tokens.get(index).getString().equals(")") ) {
                     return true;
+                } else {
+                    System.out.println("Erro em arguments(). Obtido " + tokens.get(index).getString() + " em vez de ')'");
                 }
                 return false;
             }
@@ -173,7 +179,11 @@ public class Syntatic {
                         index--;
                         return true;
                     }
+                } else {
+                    System.out.println("Erro em parameterList(). Obtido " + tokens.get(index).getString() + " em vez de Tipo");
                 }
+            } else {
+                System.out.println("Erro em parameterList(). Obtido " + tokens.get(index).getString() + " em vez de ':'");
             }
         }
         return false;
@@ -203,6 +213,8 @@ public class Syntatic {
 
                 if ( tokens.get(index).getString().equals("end") ) {
                     return true;
+                } else {
+                    System.out.println("Erro em compoundCommand(). Obtido " + tokens.get(index).getString() + " em vez de 'end'");
                 }
             }
         }
@@ -272,6 +284,8 @@ public class Syntatic {
                     return command(tokens);
                 }
             }
+        } else {
+            System.out.println("Erro em command(). Encontrado: " + tokens.get(index).getString());
         }
         return false;
     }
@@ -385,6 +399,9 @@ public class Syntatic {
 
                     if (tokens.get(index).getString().equals(")")){
                         return true;
+                    } else {
+                        System.out.println("Erro em factor(). Obtido " + tokens.get(index).getString() + " em vez de ')'");
+                        return false;
                     }
                 }
             }
@@ -404,6 +421,8 @@ public class Syntatic {
 
                 if ( tokens.get(index).getString().equals(")") ) {
                     return true;
+                } else {
+                    System.out.println("Erro em factor(). Obtido " + tokens.get(index).getString() + " em vez de ')'");
                 }
             }
         } else if ( tokens.get(index).getString().equals("not") ) {
