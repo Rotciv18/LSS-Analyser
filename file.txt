@@ -2,8 +2,17 @@ program Test3; {programa para teste do lexico}
 var
    NUMERO  : integer;
    final   : integer;
+function fatorial (n : integer) : integer;
+
+begin
+    if n > 1 then
+        x := n * fatorial (n - 1)
+    else
+        x := 1;
+    fatorial := x
+end;
 begin  {tente gerar um erro usando um caracter não permitido.. tipo $}
-   NUMERO := 3*5+7-9;
+   NUMERO := 3.5*5+7-9;
    if (NUMERO >= 20) and (NUMERO <=90) and (seila > NUMERO) then
       NUMERO := 10 / 3;
    final := NUMERO + 1	  

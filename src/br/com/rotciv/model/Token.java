@@ -53,4 +53,8 @@ public class Token extends Lexical{
             this.type = types.INVALID.getValue();
         }
     }
+
+    public void setTypeAs3DIdentifier () {
+        this.type = types.ID3D.getValue();
+    }
 }

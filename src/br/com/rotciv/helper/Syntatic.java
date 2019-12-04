@@ -56,7 +56,10 @@ public class Syntatic {
             next();
 
             return variableDeclarationList(tokens);
+        } else {
+            index--;
         }
+
         return true;
     }
 
@@ -110,6 +113,49 @@ public class Syntatic {
     }
 
     private boolean subProgramDeclaration (List<Token> tokens) {
+        if ( tokens.get(index).getString().equals("function") ) {
+            //if ( tokens.get(index).getString().equals("procedure") ) {
+            next();
+
+            if ( isId(tokens.get(index)) ) {
+                next();
+
+                if ( arguments(tokens) ) {
+                    next();
+
+                    if ( tokens.get(index).getString().equals(":") ) {
+                        next();
+
+                        if ( isType(tokens.get(index)) ) {
+                            next();
+
+                            if (tokens.get(index).getString().equals(";")) {
+                                next();
+
+                                if (variableDeclarations(tokens)) {
+                                    next();
+
+                                    if (subProgramDeclarations(tokens)) {
+                                        next();
+
+                                        return compoundCommand(tokens);
+                                    }
+                                }
+                            } else {
+                                System.out.println("Erro em subProgramDeclaration(). Obtido " + tokens.get(index).getString() + " em vez de ';'");
+                            }
+                        }
+                    }
+                }
+            } else {
+                System.out.println("Erro em subProgramDeclaration(). Obtido " + tokens.get(index).getString() + " em vez de Identificador");
+            }
+        }
+        return false;
+    }
+
+    /*
+    private boolean subProgramDeclaration (List<Token> tokens) {
         if ( tokens.get(index).getString().equals("procedure") ) {
             next();
 
@@ -141,6 +187,8 @@ public class Syntatic {
         }
         return false;
     }
+
+     */
 
     private boolean arguments (List<Token> tokens) {
         if ( tokens.get(index).getString().equals("(") ) {

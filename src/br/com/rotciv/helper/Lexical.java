@@ -5,7 +5,7 @@ public class Lexical {
         KEYWORD("keyword"), IDENTIFIER("identifier"), INTEGER_NUMBER("integer"), FLOAT_NUMBER("float"),
         DELIMITER("delimiter"), ASSIGNMENT("assignment operator"), RELATIONAL_OP("relational operator"),
         ADDING_OP("adding operator"), MULTIPLICATIVE_OP("multiplicative operator"), COMMENT("comment"),
-        INVALID("invalid");
+        INVALID("invalid"), ID3D("3D identifier");
         private final String value;
 
         types(String i) {
@@ -22,7 +22,7 @@ public class Lexical {
                 || token.equals("real") || token.equals("boolean") || token.equals("procedure")
                 || token.equals("begin") || token.equals("end") || token.equals("if")
                 || token.equals("then") || token.equals("else") || token.equals("while")
-                || token.equals("do") || token.equals("not") );
+                || token.equals("do") || token.equals("not") || token.equals("function") );
     }
 
     public static boolean isIdentifier(String token) {

@@ -39,11 +39,13 @@ public class Main {
                 }
             }
         }
+
         if (new Syntatic().isProgram(tokens)) {
             System.out.println("Deu bom");
         } else {
             System.out.println("Deu ruim");
         }
+
 
     }
 
@@ -134,15 +136,38 @@ public class Main {
                     }
                 }
 
+                //identificador 3D
+                if ( Lexical.isIdentifier(tokenString) ) {
+                    if ( j + 4 <= tokenLine.size() ) {
+                        if (tokenLine.get(j + 1).equals(".")) {
+                            if (Lexical.isIdentifier(tokenLine.get(j + 2))) {
+                                if (tokenLine.get(j + 3).equals(".")) {
+                                    if (Lexical.isIdentifier(tokenLine.get(j + 4))) { //identificador 3D!
+                                        tokenString = tokenString + tokenLine.get(j + 1) + tokenLine.get(j + 2) + tokenLine.get(j + 3) + tokenLine.get(j + 4);
+
+                                        newToken.setString(tokenString);
+                                        newToken.setTypeAs3DIdentifier();
+                                        tokens.add(newToken);
+
+                                        j = j + 4;
+                                        continue;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
                 //Classifica um tipo ao token
                 newToken.setString(tokenString);
                 if ( newToken.getString().equals("") )
                     continue;
                 newToken.setType();
-                tokens.add(newToken);
 
                 if (newToken.getType().equals(Lexical.types.INVALID.getValue()))
                     hasErrors = true;
+
+                tokens.add(newToken);
             }
         }
 
