@@ -2,13 +2,18 @@ package br.com.rotciv.helper;
 
 import br.com.rotciv.model.Token;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Syntatic {
+
+    private Stack<List<Token>> scope = new Stack<List<Token>>();
 
     private static int index = 0;
 
     public Syntatic() {
+        nextScope();
     }
 
     public boolean isProgram (List<Token> tokens){
@@ -65,6 +70,7 @@ public class Syntatic {
 
     private boolean variableDeclarationList (List<Token> tokens) {
         if ( idList(tokens) ) {
+            Token token = tokens.get(index);
             next();
 
             if ( tokens.get(index).getString().equals(":") ) {
@@ -74,6 +80,10 @@ public class Syntatic {
                     next();
 
                     if ( tokens.get(index).getString().equals(";") ) {
+                        //Programa deve abortar se existir uma variavel no mesmo escopo
+                        if ( !declareVariable(token) ) {
+                            return false;
+                        }
                         next();
 
                         if ( isId(tokens.get(index)) ) {
@@ -111,7 +121,7 @@ public class Syntatic {
         index--;
         return true;
     }
-
+/* Função para alterações feitas em sala de aula
     private boolean subProgramDeclaration (List<Token> tokens) {
         if ( tokens.get(index).getString().equals("function") ) {
             //if ( tokens.get(index).getString().equals("procedure") ) {
@@ -154,9 +164,11 @@ public class Syntatic {
         return false;
     }
 
-    /*
+ */
+
     private boolean subProgramDeclaration (List<Token> tokens) {
         if ( tokens.get(index).getString().equals("procedure") ) {
+            nextScope();
             next();
 
             if ( isId(tokens.get(index)) ) {
@@ -188,8 +200,6 @@ public class Syntatic {
         return false;
     }
 
-     */
-
     private boolean arguments (List<Token> tokens) {
         if ( tokens.get(index).getString().equals("(") ) {
             next();
@@ -211,6 +221,8 @@ public class Syntatic {
 
     private boolean parameterList (List<Token> tokens) {
         if (idList(tokens)) {
+            Token token = tokens.get(index);
+            declareVariable(token);
             next();
 
             if ( tokens.get(index).getString().equals(":") ) {
@@ -260,6 +272,7 @@ public class Syntatic {
                 next();
 
                 if ( tokens.get(index).getString().equals("end") ) {
+                    previousScope();
                     return true;
                 } else {
                     System.out.println("Erro em compoundCommand(). Obtido " + tokens.get(index).getString() + " em vez de 'end'");
@@ -293,6 +306,10 @@ public class Syntatic {
 
     private boolean command (List<Token> tokens) {
         if (variable(tokens)) {
+            if ( !isVariableDeclared(tokens.get(index)) ) {
+                System.out.println("Variavel \"" + tokens.get(index).getString() + "\" nao foi declarada!");
+                return false;
+            }
             next();
 
             if ( tokens.get(index).getString().equals(":=") ) {
@@ -454,6 +471,9 @@ public class Syntatic {
                 }
             }
             --index;
+            if ( !isVariableDeclared(tokens.get(index)) ) {
+                System.out.println("Variavel \"" + tokens.get(index).getString() + "\" nao foi declarada!");
+            }
             return true;
         } else if (tokens.get(index).getType().equals(Lexical.types.INTEGER_NUMBER.getValue())
                     || tokens.get(index).getType().equals(Lexical.types.FLOAT_NUMBER.getValue())
@@ -520,5 +540,32 @@ public class Syntatic {
 
     private void next () {
         index++;
+    }
+
+    private void previousScope () {
+        scope.pop();
+    }
+
+    private void nextScope () {
+        scope.push(new ArrayList<Token>());
+    }
+
+    private boolean isVariableDeclared (Token token) {
+        List<Token> tokens = scope.peek();
+        for (Token value : tokens) {
+            if (value.getString().equals(token.getString())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean declareVariable (Token token) {
+        if ( isVariableDeclared(token) ) {
+            System.out.println("Variavel \"" + token.getString() + "\" ja declarada!");
+            return false;
+        }
+        scope.peek().add(token);
+        return true;
     }
 }

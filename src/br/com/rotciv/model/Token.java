@@ -3,6 +3,7 @@ package br.com.rotciv.model;
 import br.com.rotciv.helper.Lexical;
 
 public class Token extends Lexical{
+
     private String string;
     private Integer line;
     private String type;
