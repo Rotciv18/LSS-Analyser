@@ -4,9 +4,7 @@
     <list default="true" id="f9b00685-3bed-48c8-8bf6-8fe60b1ebb16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/helper/Lexical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/helper/Lexical.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/helper/Syntatic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/helper/Syntatic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/model/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/model/Token.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,22 +107,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="484" y="255" width="397" height="224" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1575745367350" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1575748586463">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1575749216728">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1575748586463" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1575748586463">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1575749216728" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1575749216728">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1575748586463" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1575748586463">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1575749216728" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1575749216727">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1575748586463" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1575748586463">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1575749216727" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1575749216728">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1575748586463" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1575749216728" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1575748536311">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -147,7 +145,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/br/com/rotciv/helper/Syntatic.java</url>
-          <line>476</line>
+          <line>486</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>

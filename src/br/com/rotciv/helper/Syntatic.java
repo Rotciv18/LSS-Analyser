@@ -351,9 +351,19 @@ public class Syntatic {
         } else if ( compoundCommand(tokens) ) {
             return true;
         } else if ( tokens.get(index).getString().equals("if") ) {
+            Semantic.setExpectedType(Lexical.types.BOOLEAN.getValue());
+            Semantic.setExpressionType("");
+
             next();
 
             if (expression(tokens)) {
+                if ( !Semantic.isTypeMatch() ) {
+                    System.out.println("Erro na linha " + tokens.get(index).getLine() + ":" +
+                            "Esperado uma expressão do tipo " + Semantic.getExpectedType() +
+                            ", mas foi obtido: " + Semantic.getExpressionType());
+                    return false;
+                }
+
                 next();
 
                 if ( tokens.get(index).getString().equals("then") ) {
