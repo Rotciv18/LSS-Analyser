@@ -2,10 +2,10 @@ package br.com.rotciv.helper;
 
 public class Lexical {
     public enum types {
-        KEYWORD("keyword"), IDENTIFIER("identifier"), INTEGER_NUMBER("integer"), FLOAT_NUMBER("float"),
+        KEYWORD("keyword"), IDENTIFIER("identifier"), INTEGER_NUMBER("integer"), FLOAT_NUMBER("real"),
         DELIMITER("delimiter"), ASSIGNMENT("assignment operator"), RELATIONAL_OP("relational operator"),
         ADDING_OP("adding operator"), MULTIPLICATIVE_OP("multiplicative operator"), COMMENT("comment"),
-        INVALID("invalid"), ID3D("3D identifier");
+        INVALID("invalid"), ID3D("3D identifier"), BOOLEAN("boolean");
         private final String value;
 
         types(String i) {

@@ -8,9 +8,11 @@ import java.util.Stack;
 
 public class Syntatic {
 
-    private Stack<List<Token>> scope = new Stack<List<Token>>();
+    private Stack<List<Token>> scope = new Stack<>();
+    private Stack<Integer> indexIdList = new Stack<>();
 
-    private static int index = 0;
+    private int index = 0;
+    private String expectingType = "";
 
     public Syntatic() {
         nextScope();
@@ -70,20 +72,22 @@ public class Syntatic {
 
     private boolean variableDeclarationList (List<Token> tokens) {
         if ( idList(tokens) ) {
-            Token token = tokens.get(index);
+
             next();
 
             if ( tokens.get(index).getString().equals(":") ) {
                 next();
 
                 if ( isType(tokens.get(index)) ) {
+                    //Seta os tipos da lista de variaveis
+                    if ( !declareVariableAndTypes(tokens, tokens.get(index).getString()) ) {
+                        //Programa deve abortar se já existir uma variavel no mesmo escopo
+                        return false;
+                    }
+
                     next();
 
                     if ( tokens.get(index).getString().equals(";") ) {
-                        //Programa deve abortar se existir uma variavel no mesmo escopo
-                        if ( !declareVariable(token) ) {
-                            return false;
-                        }
                         next();
 
                         if ( isId(tokens.get(index)) ) {
@@ -221,14 +225,20 @@ public class Syntatic {
 
     private boolean parameterList (List<Token> tokens) {
         if (idList(tokens)) {
-            Token token = tokens.get(index);
-            declareVariable(token);
+            //declareVariable(token);
+
             next();
 
             if ( tokens.get(index).getString().equals(":") ) {
                 next();
 
                 if (isType(tokens.get(index))) {
+                    //Seta os tipos da lista de variaveis
+                    if ( !declareVariableAndTypes(tokens, tokens.get(index).getString()) ) {
+                        //Programa deve abortar se já existir uma variavel no mesmo escopo
+                        return false;
+                    }
+
                     next();
 
                     if ( tokens.get(index).getString().equals(";") ) {
@@ -251,6 +261,9 @@ public class Syntatic {
 
     private boolean idList (List<Token> tokens) {
         if (isId(tokens.get(index))) {
+            //Guarda indices de variaveis a serem declaradas
+            indexIdList.push(index);
+
             next();
 
             if ( tokens.get(index).getString().equals(";") ) {
@@ -306,16 +319,32 @@ public class Syntatic {
 
     private boolean command (List<Token> tokens) {
         if (variable(tokens)) {
-            if ( !isVariableDeclared(tokens.get(index)) ) {
+            //Checa se variavel foi declarada
+            if ( !isVariableDeclared(tokens.get(index), tokens) ) {
                 System.out.println("Variavel \"" + tokens.get(index).getString() + "\" nao foi declarada!");
                 return false;
             }
+            String variableType = tokens.get(index).getVariableType();
             next();
 
             if ( tokens.get(index).getString().equals(":=") ) {
+                Semantic.setExpectedType(variableType);
+                Semantic.setExpressionType("");
                 next();
 
-                return expression(tokens);
+                if ( expression(tokens) ) {
+
+                    if ( Semantic.isTypeMatch() ) {
+                        return true;
+                    } else {
+                        System.out.println("Erro na linha " + tokens.get(index).getLine() + ":" +
+                                           "Esperado uma expressão do tipo " + Semantic.getExpectedType() +
+                                           ", mas foi obtido: " + Semantic.getExpressionType());
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
             }
         } else if ( procedureActivation(tokens) ) {
             return true;
@@ -406,6 +435,9 @@ public class Syntatic {
             next();
 
             if (isRelationalOperator(tokens.get(index))) {
+                //Resultado da expressão deverá ser do tipo boolean
+                Semantic.setExpressionType(Lexical.types.BOOLEAN.getValue());
+
                 next();
 
                 return simpleExpression(tokens);
@@ -441,6 +473,9 @@ public class Syntatic {
             next();
 
             if ( isMultiplicativeOperator(tokens.get(index)) ) {
+                //Operador multiplicativo: Resultado deve ser real
+                Semantic.updateExpressionType(Lexical.types.FLOAT_NUMBER.getValue());
+
                 next();
 
                 return term(tokens);
@@ -454,6 +489,13 @@ public class Syntatic {
 
     private boolean factor (List<Token> tokens) {
         if (isId(tokens.get(index))) {
+            if ( !isVariableDeclared(tokens.get(index), tokens) ) {
+                System.out.println("Variavel \"" + tokens.get(index).getString() + "\" nao foi declarada!");
+            }
+
+            //Atualizar tipo da expressão de acordo com a variável encontrada
+            Semantic.updateExpressionType(tokens.get(index).getVariableType());
+
             next();
 
             if (tokens.get(index).getString().equals("(")) {
@@ -471,14 +513,18 @@ public class Syntatic {
                 }
             }
             --index;
-            if ( !isVariableDeclared(tokens.get(index)) ) {
-                System.out.println("Variavel \"" + tokens.get(index).getString() + "\" nao foi declarada!");
-            }
             return true;
         } else if (tokens.get(index).getType().equals(Lexical.types.INTEGER_NUMBER.getValue())
                     || tokens.get(index).getType().equals(Lexical.types.FLOAT_NUMBER.getValue())
                     || tokens.get(index).getString().equals("true")
                     || tokens.get(index).getString().equals("false")) {
+
+            String type = tokens.get(index).getType();
+            boolean isRelational = ( type.equals("true") || type.equals("false") );
+            //Atualiza expressão para boolean se achar "true" ou "false". Se não, atualiza para int/real
+            Semantic.updateExpressionType( isRelational ? Lexical.types.BOOLEAN.getValue()
+                                                        : type) ;
+
             return true;
 
         } else if ( tokens.get(index).getString().equals("(") ) {
@@ -494,6 +540,8 @@ public class Syntatic {
                 }
             }
         } else if ( tokens.get(index).getString().equals("not") ) {
+            Semantic.updateExpressionType(Lexical.types.BOOLEAN.getValue());
+
             next();
 
             return factor(tokens);
@@ -547,13 +595,14 @@ public class Syntatic {
     }
 
     private void nextScope () {
-        scope.push(new ArrayList<Token>());
+        scope.push(new ArrayList<>());
     }
 
-    private boolean isVariableDeclared (Token token) {
-        List<Token> tokens = scope.peek();
-        for (Token value : tokens) {
+    private boolean isVariableDeclared (Token token, List<Token> tokens) {
+        List<Token> tokensInScope = scope.peek();
+        for (Token value : tokensInScope) {
             if (value.getString().equals(token.getString())) {
+                tokens.get(index).setVariableType(value.getVariableType());
                 return true;
             }
         }
@@ -561,11 +610,20 @@ public class Syntatic {
     }
 
     private boolean declareVariable (Token token) {
-        if ( isVariableDeclared(token) ) {
+        if ( isVariableDeclared(token, new ArrayList<>()) ) {
             System.out.println("Variavel \"" + token.getString() + "\" ja declarada!");
             return false;
         }
         scope.peek().add(token);
+        return true;
+    }
+
+    private boolean declareVariableAndTypes (List<Token> tokens, String type) {
+        while ( !indexIdList.empty() ) {
+            if ( !declareVariable(tokens.get(indexIdList.peek())) )
+                return false;
+            tokens.get(indexIdList.pop()).setVariableType(type);
+        }
         return true;
     }
 }

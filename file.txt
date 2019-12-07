@@ -9,10 +9,10 @@ var
     fatorial : integer;
 begin
     if n > 1 then
-        x := n * fatorial (n - 1)
+        x := n * fatorial
     else
         x := 1;
-    fatorial := x
+    fatorial := x * 3
 end;
 begin  {tente gerar um erro usando um caracter não permitido.. tipo $}
    NUMERO := 3.5*5+7-9;

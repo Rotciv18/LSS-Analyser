@@ -7,6 +7,7 @@ public class Token extends Lexical{
     private String string;
     private Integer line;
     private String type;
+    private String variableType = "";
 
     public Token() {
     }
@@ -29,6 +30,14 @@ public class Token extends Lexical{
 
     public String getType() {
         return type;
+    }
+
+    public String getVariableType() {
+        return variableType;
+    }
+
+    public void setVariableType(String variableType) {
+        this.variableType = variableType;
     }
 
     public void setType() {
