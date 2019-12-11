@@ -10,9 +10,9 @@ public class Syntatic {
 
     private Stack<List<Token>> scope = new Stack<>();
     private Stack<Integer> indexIdList = new Stack<>();
+    private int scopeIndex = -1;
 
     private int index = 0;
-    private String expectingType = "";
 
     public Syntatic() {
         nextScope();
@@ -172,29 +172,49 @@ public class Syntatic {
 
     private boolean subProgramDeclaration (List<Token> tokens) {
         if ( tokens.get(index).getString().equals("procedure") ) {
-            nextScope();
             next();
 
             if ( isId(tokens.get(index)) ) {
+                if ( isVariableDeclared(tokens.get(index), tokens) ) {
+                    System.out.println("Identficador \"" + tokens.get(index).getString() + "\" já declarado");
+                    return false;
+                }
+                int procedureIndex = index;
+                declareVariable(tokens.get(index));
                 next();
+
+                nextScope();
 
                 if ( arguments(tokens) ) {
                     next();
 
-                    if ( tokens.get(index).getString().equals(";") ){
+                    if ( tokens.get(index).getString().equals(":") ) {
                         next();
 
-                        if (variableDeclarations(tokens)){
+                        if ( isType(tokens.get(index)) ) {
+                            //Gambiarra para setar tipo da função    :(
+                            String type = tokens.get(index).getString();
+                            int indexOfTokenInScope = scope.elementAt(scopeIndex-1).indexOf(tokens.get(procedureIndex));
+                            scope.elementAt(scopeIndex-1).get(indexOfTokenInScope).setVariableType(type);
+
                             next();
 
-                            if (subProgramDeclarations(tokens)) {
+                            if (tokens.get(index).getString().equals(";")) {
                                 next();
 
-                                return compoundCommand(tokens);
+                                if (variableDeclarations(tokens)) {
+                                    next();
+
+                                    if (subProgramDeclarations(tokens)) {
+                                        next();
+
+                                        return compoundCommand(tokens);
+                                    }
+                                }
+                            } else {
+                                System.out.println("Erro em subProgramDeclaration(). Obtido " + tokens.get(index).getString() + " em vez de ';'");
                             }
                         }
-                    } else {
-                        System.out.println("Erro em subProgramDeclaration(). Obtido " + tokens.get(index).getString() + " em vez de ';'");
                     }
                 }
             } else {
@@ -321,7 +341,7 @@ public class Syntatic {
         if (variable(tokens)) {
             //Checa se variavel foi declarada
             if ( !isVariableDeclared(tokens.get(index), tokens) ) {
-                System.out.println("Variavel \"" + tokens.get(index).getString() + "\" nao foi declarada!");
+                System.out.println("Linha " + tokens.get(index).getLine() + "\nVariavel \"" + tokens.get(index).getString() + "\" nao foi declarada!");
                 return false;
             }
             String variableType = tokens.get(index).getVariableType();
@@ -500,7 +520,8 @@ public class Syntatic {
     private boolean factor (List<Token> tokens) {
         if (isId(tokens.get(index))) {
             if ( !isVariableDeclared(tokens.get(index), tokens) ) {
-                System.out.println("Variavel \"" + tokens.get(index).getString() + "\" nao foi declarada!");
+                System.out.println("Linha " + tokens.get(index).getLine() + "\nVariavel \"" + tokens.get(index).getString() + "\" nao foi declarada!");
+                return false;
             }
 
             //Atualizar tipo da expressão de acordo com a variável encontrada
@@ -601,27 +622,38 @@ public class Syntatic {
     }
 
     private void previousScope () {
+        scopeIndex--;
         scope.pop();
     }
 
     private void nextScope () {
+        scopeIndex++;
         scope.push(new ArrayList<>());
     }
 
     private boolean isVariableDeclared (Token token, List<Token> tokens) {
-        List<Token> tokensInScope = scope.peek();
-        for (Token value : tokensInScope) {
-            if (value.getString().equals(token.getString())) {
-                tokens.get(index).setVariableType(value.getVariableType());
-                return true;
+        Stack<List<Token>> searchScope = (Stack<List<Token>>) scope.clone();
+
+        while ( !searchScope.isEmpty() ) {
+            List<Token> tokensInScope = searchScope.peek();
+            for (Token value : tokensInScope) {
+                if (value.getString().equals(token.getString())) {
+                    try {
+                        tokens.get(index).setVariableType(value.getVariableType());
+                    } catch (Exception e) {
+                        return true;
+                    }
+                    return true;
+                }
             }
+            searchScope.pop();
         }
         return false;
     }
 
     private boolean declareVariable (Token token) {
         if ( isVariableDeclared(token, new ArrayList<>()) ) {
-            System.out.println("Variavel \"" + token.getString() + "\" ja declarada!");
+            System.out.println("Linha " + token.getLine() + ":\nVariavel \"" + token.getString() + "\" ja declarada!");
             return false;
         }
         scope.peek().add(token);

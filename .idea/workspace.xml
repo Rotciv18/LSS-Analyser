@@ -4,6 +4,7 @@
     <list default="true" id="f9b00685-3bed-48c8-8bf6-8fe60b1ebb16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/helper/Syntatic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LSSAnalyzer/br/com/rotciv/helper/Syntatic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/com/rotciv/helper/Syntatic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/rotciv/helper/Syntatic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,56 +108,46 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="484" y="255" width="397" height="224" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1575745367350" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1575749216728">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1576034015074">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1575749216728" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1575749216728">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576034015074" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1576034015074">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1575749216728" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1575749216727">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576034015074" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1576034015074">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1575749216727" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1575749216728">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576034015074" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1576034015074">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1575749216728" />
-    <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1575748536311">
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576034015074" />
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1576030499845">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1575748536311" />
-    <state width="1323" height="223" key="GridCell.Tab.1.center" timestamp="1575748536310">
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576030499845" />
+    <state width="1323" height="223" key="GridCell.Tab.1.center" timestamp="1576030499845">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1575748536310" />
-    <state width="1323" height="223" key="GridCell.Tab.1.left" timestamp="1575748536310">
+    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1576030499845" />
+    <state width="1323" height="223" key="GridCell.Tab.1.left" timestamp="1576030499845">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1575748536310" />
-    <state width="1323" height="223" key="GridCell.Tab.1.right" timestamp="1575748536311">
+    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1576030499845" />
+    <state width="1323" height="223" key="GridCell.Tab.1.right" timestamp="1576030499845">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1575748536311" />
+    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1576030499845" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/br/com/rotciv/helper/Syntatic.java</url>
-          <line>486</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="tokens.get(index).getString()" language="JAVA" />
-        <watch expression="tokens.get(indexIdList.peek()).getString()" language="JAVA" />
-        <watch expression="Semantic.getExpressionType()" language="JAVA" />
-        <watch expression="expectingType" language="JAVA" />
         <watch expression="index" language="JAVA" />
+        <watch expression="scope.peek()" language="JAVA" />
+        <watch expression="scope" language="JAVA" />
+        <watch expression="tokens.get(index).getString()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
