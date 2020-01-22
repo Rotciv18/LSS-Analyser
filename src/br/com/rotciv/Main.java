@@ -63,7 +63,7 @@ public class Main {
             }
 
             List<String> tokenLine = new ArrayList<>();
-            StringTokenizer stringTokenizer = new StringTokenizer(fileLines.get(i), ".:=;(),+-*/{} \r\t", true);
+            StringTokenizer stringTokenizer = new StringTokenizer(fileLines.get(i), ".:=;(),+-*/{}<> \r\t", true);
 
             while (stringTokenizer.hasMoreTokens()){
                 //tokenLine.add(stringTokenizer.nextToken().replaceAll("\\s", ""));

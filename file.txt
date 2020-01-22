@@ -1,5 +1,6 @@
 program Test3; {programa para teste do lexico}
 var
+
    NUMERO  : real;
    final1 : real;
 procedure fatorial (n : integer) : integer;
@@ -9,18 +10,19 @@ var
     fatorial2 : real;
 begin
     if n <= 1 then
-        x := n * fatorial
+        x := n * fatorial2
     else
         x := 1;
     x := x * 3
 end;
 procedure fatorial2 (n : integer) : integer;
 var
+    booleano : boolean;
     final : real;
     x : real;
     fatorial1 : real;
 begin
-    if n <= 1 then
+    if ((x<x) and (x<x)) then
         x := n * fatorial
     else
         x := 1;

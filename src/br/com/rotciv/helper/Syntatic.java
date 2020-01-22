@@ -551,7 +551,8 @@ public class Syntatic {
                     || tokens.get(index).getString().equals("false")) {
 
             String type = tokens.get(index).getType();
-            boolean isRelational = ( type.equals("true") || type.equals("false") );
+            String tokenString = tokens.get(index).getString();
+            boolean isRelational = ( tokenString.equals("true") || tokenString.equals("false") );
             //Atualiza expressão para boolean se achar "true" ou "false". Se não, atualiza para int/real
             Semantic.updateExpressionType( isRelational ? Lexical.types.BOOLEAN.getValue()
                                                         : type) ;

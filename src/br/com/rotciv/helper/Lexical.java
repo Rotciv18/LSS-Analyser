@@ -22,7 +22,8 @@ public class Lexical {
                 || token.equals("real") || token.equals("boolean") || token.equals("procedure")
                 || token.equals("begin") || token.equals("end") || token.equals("if")
                 || token.equals("then") || token.equals("else") || token.equals("while")
-                || token.equals("do") || token.equals("not") || token.equals("function") );
+                || token.equals("do") || token.equals("not") || token.equals("function")
+                || token.equals("true") || token.equals("false"));
     }
 
     public static boolean isIdentifier(String token) {
